@@ -1,0 +1,18 @@
+﻿<Window x:Class="Terminal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Terminal"
+        mc:Ignorable="d"
+        Title="Proyecto Final" Height="510" Width="766" Background="#FFBDD6D6" WindowStyle="None" WindowState="Maximized" Icon="pack://siteoforigin:,,,/Resources/logo.png" KeyDown="Window_KeyDown" GotKeyboardFocus="Window_GotKeyboardFocus">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="191*"/>
+        </Grid.RowDefinitions>
+        <Frame x:Name="frame" Content="" Margin="10" NavigationUIVisibility="Hidden" Source="/Terminal;component/Pages/Login.xaml" Grid.RowSpan="2" Navigated="frame_Navigated"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Margin="10,10,0,10" Width="188" Source="pack://siteoforigin:,,,/Resources/logo.png"/>
+
+    </Grid>
+</Window>
