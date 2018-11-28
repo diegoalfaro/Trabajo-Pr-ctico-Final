@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Terminal.Controllers
 {
@@ -16,7 +17,16 @@ namespace Terminal.Controllers
         static public void NavigateTo(String pPageName, dynamic pParams = null)
         {
             var uri = new Uri(GetPagePath(pPageName), UriKind.Relative);
-            ((MainWindow)App.Instance.MainWindow).frame.Navigate(uri, pParams);
+            var frame = ((MainWindow)App.Instance.MainWindow).frame;
+
+            frame.Navigate(uri, pParams);
+        }
+
+        static public void NavigateTo(Page pPageObject, dynamic pParams = null)
+        {
+            var frame = ((MainWindow)App.Instance.MainWindow).frame;
+
+            frame.Navigate(pPageObject, pParams);
         }
 
         static public void GoBack()
@@ -24,12 +34,9 @@ namespace Terminal.Controllers
             ((MainWindow)App.Current.MainWindow).frame.GoBack();
         }
 
-        static public void ShowError(String pError)
+        static public void ShowError(dynamic pParams)
         {
-            NavigateTo("Error", new
-            {
-                text = pError
-            });
+            NavigateTo("Error", pParams);
         }
     }
 }

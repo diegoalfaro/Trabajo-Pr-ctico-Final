@@ -23,24 +23,6 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Login : Page
     {
-        private int CurrentId
-        {
-            get
-            {
-                int value;
-                Int32.TryParse(this.usernameBox.Text, out value);
-                return value;
-            }
-        }
-        private int CurrentPassword
-        {
-            get
-            {
-                int value;
-                Int32.TryParse(this.passwordBox.Password, out value);
-                return value;
-            }
-        }
 
         public Login()
         {
@@ -49,16 +31,39 @@ namespace Terminal.Pages
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            var login = await TryLogin(this.CurrentId, this.CurrentPassword);
-
-            if (IsLogged())
+            try
             {
+                var currentId = this.usernameBox.Text;
+                var currentPassword = this.passwordBox.Password;
+
+                NavigateTo("Loading");
+
+                if (!Int32.TryParse(currentId, out int id))
+                {
+                    throw new Exception("Formato de usuario inválido");
+                }
+
+                if (!Int32.TryParse(currentPassword, out int password))
+                {
+                    throw new Exception("Formato de constraseña inválido");
+                }
+
+                await TryLogin(id, password);
+
+                if (!IsLogged())
+                {
+                    throw new Exception("Comprobar los datos ingresados");
+                }
+
                 NavigateTo("Main");
             }
-
-            else
+            catch (Exception pEx)
             {
-                ShowError("Comprobar los datos ingresados");
+                ShowError(new
+                {
+                    Text = pEx.Message,
+                    BackPage = this
+                });
             }
         }
     }

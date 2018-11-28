@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using static Terminal.Controllers.NavigationController;
+using static Terminal.Controllers.SessionController;
 
 namespace Terminal.Pages
 {
@@ -22,9 +23,23 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Balance : Page
     {
+        public double CurrentBalance { get; set; }
+
         public Balance()
         {
             InitializeComponent();
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            double? balance = await GetBalance();
+
+            if (balance != null)
+            {
+                this.CurrentBalance = (double)balance;
+                this.DataContext = this;
+                this.UpdateLayout();
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

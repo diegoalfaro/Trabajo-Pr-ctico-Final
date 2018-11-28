@@ -13,6 +13,15 @@ namespace Terminal
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            this.DispatcherUnhandledException += (sender, e) =>
+            {
+                MessageBox.Show(e.Exception.Message);
+                e.Handled = true;
+            };
+        }
+
         public static App Instance => (App)Current;
     }
 }

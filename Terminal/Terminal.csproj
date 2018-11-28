@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +111,9 @@
     </Compile>
     <Compile Include="Pages\Error.xaml.cs">
       <DependentUpon>Error.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -160,5 +167,6 @@
       <Name>KeyPad</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

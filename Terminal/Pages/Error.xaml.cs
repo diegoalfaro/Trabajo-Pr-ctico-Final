@@ -25,20 +25,19 @@ namespace Terminal.Pages
         public Error()
         {
             InitializeComponent();
-        }
-
-        private void Page_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (e.NewValue != null)
-            {
-                dynamic data = e.NewValue;
-                this.textBlock.Text = data.text;
-            }
+            this.DataContext = new { Text = "Hubo un error" };
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            GoBack();
+            var backPage = (this.DataContext as dynamic).BackPage;
+
+            if ((backPage as string != null) || (backPage as Page != null))
+            {
+                NavigateTo(backPage);
+            }
+
+            else GoBack();
         }
     }
 }

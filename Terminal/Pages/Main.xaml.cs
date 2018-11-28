@@ -23,9 +23,12 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Main : Page
     {
+        public string WelcomeText => $"Bienvenido, {ClientInfo.name}";
+
         public Main()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         private void pinButton_Click(object sender, RoutedEventArgs e)

@@ -7,34 +7,52 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Main">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <!-- Row 0 -->
-
+    
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+    </Page.Resources>
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label HorizontalContentAlignment="Center" Content="{Binding WelcomeText}" Width="Auto"/>
         <Grid>
-            <Button x:Name="pinButton" Content="Blanquear PIN" HorizontalAlignment="Center" Click="pinButton_Click"/>
-        </Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="1">
-            <Button x:Name="balanceButton" Content="Saldo CC" HorizontalAlignment="Center" Click="balanceButton_Click"/>
-        </Grid>
-        <!-- Row 0 -->
+            <!-- Row 0 -->
 
-        <Grid Grid.Row="1">
-            <Button x:Name="movementsButton" Content="Últimos movimientos" HorizontalAlignment="Center" Click="movementsButton_Click"/>
-        </Grid>
+            <Grid>
+                <Button x:Name="pinButton" Content="Blanquear PIN" Click="pinButton_Click"/>
+            </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Button x:Name="logoutButton" Content="Cerrar sesión" HorizontalAlignment="Center" Click="logoutButton_Click"/>
+            <Grid Grid.Column="1">
+                <Button x:Name="balanceButton" Content="Saldo CC" Click="balanceButton_Click"/>
+            </Grid>
+            <!-- Row 0 -->
+
+            <Grid Grid.Row="1">
+                <Button x:Name="movementsButton" Content="Últimos movimientos" Click="movementsButton_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Button x:Name="logoutButton" Content="Cerrar sesión" Click="logoutButton_Click" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFFFDAE1" Offset="0"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                            <GradientStop Color="#FFD8A3B6" Offset="0.5"/>
+                            <GradientStop Color="#FF63132C" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+    </StackPanel>
 </Page>
