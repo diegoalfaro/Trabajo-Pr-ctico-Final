@@ -3,23 +3,28 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:Terminal.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Movements">
+      Title="Movements" Loaded="Page_Loaded">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <!-- Row 0 -->
-
-        <Grid>
-            <Button x:Name="backButton" Content="Volver" HorizontalAlignment="Center" Click="backButton_Click"/>
-        </Grid>
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ListView x:Name="listView" Height="260" Margin="0, 0, 0, 20" ItemsSource="{Binding MovementList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="260"  Header="Fecha" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Width="260" Header="Monto" DisplayMemberBinding="{Binding ammount}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click">
+            <Button.Content>
+                <WrapPanel>
+                    <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                    <TextBlock VerticalAlignment="Center">Volver</TextBlock>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
+    </StackPanel>
 </Page>

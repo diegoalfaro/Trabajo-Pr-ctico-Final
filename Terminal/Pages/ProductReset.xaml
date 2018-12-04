@@ -4,22 +4,55 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Terminal.Pages"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductReset">
+      Title="ProductReset" Loaded="Page_Loaded">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <!-- Row 0 -->
-
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid>
-            <Button x:Name="backButton" Content="Volver" HorizontalAlignment="Center" Click="backButton_Click"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.ColumnSpan="2" Target="{Binding ElementName=productsBox}" Width="Auto">
+                <WrapPanel>
+                    <fa:ImageAwesome Icon="CreditCard" Width="34" Margin="0, 0, 20, 0"/>
+                    <AccessText VerticalAlignment="Center">Seleccionar producto</AccessText>
+                </WrapPanel>
+            </Label>
+            <ListBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="productsBox" Margin="0, 0, 0, 20" ItemsSource="{Binding Products, IsAsync=True}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding name}" />
+                            <TextBlock Text="{Binding type, StringFormat='\&#x20;({0:S})'}" />
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Grid.Row="2" x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click" Margin="0, 0, 10, 0">
+                <Button.Content>
+                    <WrapPanel>
+                        <fa:ImageAwesome Icon="ArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                        <TextBlock VerticalAlignment="Center">Volver</TextBlock>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="2" Grid.Column="1" x:Name="resetButton" Click="resetButton_Click" Margin="10, 0, 0, 0">
+                <Button.Content>
+                    <WrapPanel>
+                        <fa:ImageAwesome Icon="Refresh" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                        <TextBlock VerticalAlignment="Center">Blanquear PIN</TextBlock>
+                    </WrapPanel>
+                </Button.Content>
+            </Button>
         </Grid>
-    </Grid>
+    </StackPanel>
 </Page>

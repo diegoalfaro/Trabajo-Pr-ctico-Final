@@ -3,14 +3,29 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:Terminal.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Balance" Loaded="Page_Loaded">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock FontWeight="SemiBold" Margin="0, 0, 0, 20" HorizontalAlignment="Center">Cuenta corriente</TextBlock>
-        <TextBlock HorizontalAlignment="Right" Margin="0, 0, 0, 20" Text="{Binding CurrentBalance, IsAsync=True, StringFormat=Saldo: {0:C}}"/>
-        <Button x:Name="backButton" Content="Volver" HorizontalAlignment="Center" Click="backButton_Click"/>
+        <Label FontFamily="Open Sans" HorizontalContentAlignment="Center" Width="Auto">
+            <WrapPanel>
+                <fa:ImageAwesome Icon="Money" Width="38" Margin="0, 0, 20, 0"/>
+                <AccessText>Cuenta Corriente</AccessText>
+            </WrapPanel>
+        </Label>
+        <Label HorizontalContentAlignment="Center" Margin="0, 0, 0, 20">
+            <TextBlock Text="{Binding CurrentBalance, IsAsync=True, StringFormat=Saldo: {0:C}}"></TextBlock>
+        </Label>
+        <Button x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click">
+            <Button.Content>
+                <WrapPanel>
+                    <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                    <TextBlock VerticalAlignment="Center">Volver</TextBlock>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
     </StackPanel>
 </Page>

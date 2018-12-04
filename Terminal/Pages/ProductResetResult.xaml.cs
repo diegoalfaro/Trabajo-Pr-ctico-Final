@@ -18,25 +18,18 @@ using static Terminal.Controllers.NavigationController;
 namespace Terminal.Pages
 {
     /// <summary>
-    /// Lógica de interacción para Error.xaml
+    /// Lógica de interacción para ProductResetResult.xaml
     /// </summary>
-    public partial class Error : Page
+    public partial class ProductResetResult : Page
     {
-        public bool CanGoBack => CanGoBack();
-
-        public Error()
+        public ProductResetResult()
         {
             InitializeComponent();
-            this.DataContext = new { Text = "Hubo un error" };
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             GoBack();
-            /*
-            var dataContext = this.DataContext as dynamic;
-            NavigateTo(dataContext.BackPage);
-            */
         }
     }
 }

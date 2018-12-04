@@ -23,7 +23,6 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Login : Page
     {
-
         public Login()
         {
             InitializeComponent();
@@ -33,10 +32,10 @@ namespace Terminal.Pages
         {
             try
             {
-                var currentId = this.usernameBox.Text;
+                var currentId = this.clientIdBox.Text;
                 var currentPassword = this.passwordBox.Password;
 
-                NavigateTo("Loading");
+                ShowLoading();
 
                 if (!Int32.TryParse(currentId, out int id))
                 {
@@ -57,12 +56,14 @@ namespace Terminal.Pages
 
                 NavigateTo("Main");
             }
+
             catch (Exception pEx)
             {
                 ShowError(new
                 {
                     Text = pEx.Message,
-                    BackPage = this
+                    BackPage = this,
+                    RemoveBackEntry = true
                 });
             }
         }

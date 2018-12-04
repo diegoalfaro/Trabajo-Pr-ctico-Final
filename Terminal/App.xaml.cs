@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Terminal
 {
@@ -15,13 +16,13 @@ namespace Terminal
     {
         public App()
         {
+            /*
             this.DispatcherUnhandledException += (sender, e) =>
             {
                 MessageBox.Show(e.Exception.Message);
                 e.Handled = true;
             };
+            */
         }
-
-        public static App Instance => (App)Current;
     }
 }

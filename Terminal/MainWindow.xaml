@@ -5,14 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Terminal"
         mc:Ignorable="d"
-        Title="Proyecto Final" Height="510" Width="766" Background="#FFBDD6D6" WindowStyle="None" WindowState="Maximized" Icon="pack://siteoforigin:,,,/Resources/logo.png" KeyDown="Window_KeyDown" GotKeyboardFocus="Window_GotKeyboardFocus">
+        Title="Proyecto Final" Height="510" Width="766" Background="#FFFDFDFD" WindowState="Maximized" Icon="pack://siteoforigin:,,,/Resources/logo.png" GotKeyboardFocus="Window_GotKeyboardFocus" WindowStyle="None">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="191*"/>
-        </Grid.RowDefinitions>
-        <Frame x:Name="frame" Content="" Margin="10" NavigationUIVisibility="Hidden" Source="/Terminal;component/Pages/Login.xaml" Grid.RowSpan="2" Navigated="frame_Navigated"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Margin="10,10,0,10" Width="188" Source="pack://siteoforigin:,,,/Resources/logo.png"/>
-
+        <Frame x:Name="frame" Content="" NavigationUIVisibility="Hidden" Source="/Terminal;component/Pages/Login.xaml" Navigated="frame_Navigated"/>
+        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 20, 0, 20" Width="250" Source="https://logodesignerblog.com/wp-content/uploads/2009/02/citibank.jpg"/>
     </Grid>
 </Window>

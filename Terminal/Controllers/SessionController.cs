@@ -52,5 +52,11 @@ namespace Terminal.Controllers
             var result = await ApiController.GetProductsByClientID(ClientID);
             return result;
         }
+
+        static public async Task<dynamic> GetMovements()
+        {
+            var result = await ApiController.GetMovementsByClientID(ClientID);
+            return result;
+        }
     }
 }

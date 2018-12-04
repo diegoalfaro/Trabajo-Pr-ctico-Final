@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using static Terminal.Controllers.NavigationController;
+using static Terminal.Controllers.SessionController;
 
 namespace Terminal.Pages
 {
@@ -22,6 +23,8 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Movements : Page
     {
+        public IEnumerable<dynamic> MovementList { get; set; }
+
         public Movements()
         {
             InitializeComponent();
@@ -30,6 +33,13 @@ namespace Terminal.Pages
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             GoBack();
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.MovementList = await GetMovements();
+            this.DataContext = this;
+            this.UpdateLayout();
         }
     }
 }

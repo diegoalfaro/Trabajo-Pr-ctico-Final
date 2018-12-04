@@ -66,5 +66,14 @@ namespace Terminal.Controllers
             if (json.Count > 0) return json[0].response.movements;
             else return null;
         }
+
+        static public async Task<dynamic> ResetProductByProductNumber(string pProductNumber)
+        {
+            var uri = $"product-reset?number={pProductNumber}";
+            var json = await GetJSON(uri);
+
+            if (json.Count > 0) return json[0].response;
+            else return null;
+        }
     }
 }

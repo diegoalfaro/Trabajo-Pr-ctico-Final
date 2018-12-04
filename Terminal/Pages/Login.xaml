@@ -4,14 +4,32 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Terminal.Pages"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d"
       Title="Login" Height="479.671" Width="770.33">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Label Content="Usuario:"/>
-        <TextBox x:Name="usernameBox"/>
-        <Label Content="Contraseña:"/>
-        <PasswordBox x:Name="passwordBox"/>
-        <Button x:Name="loginButton" Content="Acceder" Click="loginButton_Click" Margin="0, 30, 0, 0"/>
+        <Label Target="{Binding ElementName=clientIdBox}">
+            <WrapPanel>
+                <fa:ImageAwesome Icon="User" Width="34" Margin="0, 0, 20, 0"/>
+                <AccessText VerticalAlignment="Center">DNI</AccessText>
+            </WrapPanel>
+        </Label>
+        <TextBox Name="clientIdBox"/>
+        <Label Target="{Binding ElementName=passwordBox}">
+            <WrapPanel>
+                <fa:ImageAwesome Icon="Lock" Width="38" Margin="0, 0, 20, 0"/>
+                <AccessText>Contraseña</AccessText>
+            </WrapPanel>
+        </Label>
+        <PasswordBox Name="passwordBox"/>
+        <Button Name="loginButton" Click="loginButton_Click" Margin="0, 30, 0, 0">
+            <Button.Content>
+                <WrapPanel>
+                    <fa:ImageAwesome Icon="SignIn" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                    <TextBlock VerticalAlignment="Center">Acceder</TextBlock>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
     </StackPanel>
 </Page>

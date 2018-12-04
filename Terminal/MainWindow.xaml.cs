@@ -20,9 +20,29 @@ namespace Terminal
     /// </summary>
     public partial class MainWindow : Window
     {
+        static void CreateKeyPad(Control pControl)
+        {
+            var keypad = new KeyPad.Keypad(pControl);
+
+            keypad.Show();
+
+            Point position = pControl.PointToScreen(new Point(0d, 0d));
+            keypad.Top = position.Y + pControl.ActualHeight;
+
+            pControl.LostKeyboardFocus += (a, b) => {
+                keypad.Close();
+            };
+
+            keypad.Deactivated += (a, b) => {
+                keypad.Close();
+            };
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            Keyboard.DefaultRestoreFocusMode = RestoreFocusMode.None;
+            Keyboard.PrimaryDevice.DefaultRestoreFocusMode = RestoreFocusMode.None;
         }
 
         private void frame_Navigated(object sender, NavigationEventArgs e)
@@ -44,20 +64,11 @@ namespace Terminal
 
         private void Window_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (e.NewFocus as TextBox == null && e.NewFocus as PasswordBox == null) return;
+            //e.Handled = true;
 
-            e.KeyboardDevice.ClearFocus();
+            //if ((e.NewFocus as TextBox) != null && (e.NewFocus as PasswordBox) != null) return;
 
-            var keypad = new KeyPad.Keypad(e.NewFocus);
-
-            keypad.Show();
-
-            Point position = (e.NewFocus as Control).PointToScreen(new Point(0d, 0d));
-            keypad.Top = position.Y + (e.NewFocus as Control).ActualHeight;
-
-            e.NewFocus.LostKeyboardFocus += (a, b) => {
-                keypad.Close();
-            };
+            //CreateKeyPad(e.NewFocus as Control);
         }
     }
 }
