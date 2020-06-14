@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Domain
+﻿namespace Domain
 {
-    public class Product
+    public interface Product
     {
-        public string Number { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
+        string Number { get; set; }
+        string Name { get; set; }
+        string Type { get; set; }
     }
 }

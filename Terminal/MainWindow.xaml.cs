@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+using static Terminal.Properties.Settings;
 
 namespace Terminal
 {
@@ -64,11 +56,13 @@ namespace Terminal
 
         private void Window_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            //e.Handled = true;
+            if (Default.SHOW_KEYPAD) {
+                e.Handled = true;
 
-            //if ((e.NewFocus as TextBox) != null && (e.NewFocus as PasswordBox) != null) return;
+                if ((e.NewFocus as TextBox) != null && (e.NewFocus as PasswordBox) != null) return;
 
-            //CreateKeyPad(e.NewFocus as Control);
+                CreateKeyPad(e.NewFocus as Control);
+            }
         }
     }
 }

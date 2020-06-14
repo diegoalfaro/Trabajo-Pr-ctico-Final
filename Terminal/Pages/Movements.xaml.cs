@@ -1,20 +1,10 @@
-﻿using System;
+﻿using Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-using static Terminal.Controllers.NavigationController;
-using static Terminal.Controllers.SessionController;
+using static Terminal.Helpers.NavigationHelper;
+using static Terminal.Helpers.SessionHelper;
 
 namespace Terminal.Pages
 {
@@ -23,7 +13,7 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Movements : Page
     {
-        public IEnumerable<dynamic> MovementList { get; set; }
+        public IEnumerable<AccountMovement> AccountMovementList { get; set; }
 
         public Movements()
         {
@@ -37,9 +27,9 @@ namespace Terminal.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.MovementList = await GetMovements();
-            this.DataContext = this;
-            this.UpdateLayout();
+            AccountMovementList = await GetMovements();
+            DataContext = this;
+            UpdateLayout();
         }
     }
 }

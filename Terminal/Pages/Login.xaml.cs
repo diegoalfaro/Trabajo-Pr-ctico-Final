@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-using static Terminal.Controllers.NavigationController;
-using static Terminal.Controllers.SessionController;
+using static Terminal.Helpers.NavigationHelper;
+using static Terminal.Helpers.SessionHelper;
 
 namespace Terminal.Pages
 {
@@ -30,12 +19,11 @@ namespace Terminal.Pages
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            bool loading = false;
             try
             {
                 var currentId = this.clientIdBox.Text;
                 var currentPassword = this.passwordBox.Password;
-
-                ShowLoading();
 
                 if (!Int32.TryParse(currentId, out int id))
                 {
@@ -47,6 +35,8 @@ namespace Terminal.Pages
                     throw new Exception("Formato de constraseña inválido");
                 }
 
+                loading = true;
+                ShowLoading();
                 await TryLogin(id, password);
 
                 if (!IsLogged())
@@ -63,7 +53,7 @@ namespace Terminal.Pages
                 {
                     Text = pEx.Message,
                     BackPage = this,
-                    RemoveBackEntry = true
+                    RemoveBackEntry = loading
                 });
             }
         }

@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-using static Terminal.Controllers.NavigationController;
-using static Terminal.Controllers.SessionController;
+using static Terminal.Helpers.NavigationHelper;
+using static Terminal.Helpers.SessionHelper;
 
 namespace Terminal.Pages
 {
@@ -32,11 +21,11 @@ namespace Terminal.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            double? balance = await GetBalance();
+            AccountBalance result = await GetBalance();
 
-            if (balance != null)
+            if (result != null)
             {
-                this.CurrentBalance = (double)balance;
+                this.CurrentBalance = result.Balance;
                 this.DataContext = this;
                 this.UpdateLayout();
             }

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Terminal.Controllers
+namespace Terminal.Helpers
 {
-    static class NavigationController
+    public static class NavigationHelper
     {
-        static NavigationController()
+        static NavigationHelper()
         {
             var frame = GetNavigationFrame();
 
@@ -27,7 +23,7 @@ namespace Terminal.Controllers
             };
         }
 
-        static private Frame GetNavigationFrame()
+        static public Frame GetNavigationFrame()
         {
             return (App.Current.MainWindow as MainWindow).frame;
         }

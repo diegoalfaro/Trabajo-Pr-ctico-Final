@@ -2,7 +2,10 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Terminal.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="API_URI" Type="System.String" Scope="Application">
+    <Setting Name="SHOW_KEYPAD" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="API_URI" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://my-json-server.typicode.com/utn-frcu-isi-tdp/tas-db/</Value>
     </Setting>
   </Settings>

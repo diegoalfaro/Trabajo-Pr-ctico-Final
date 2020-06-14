@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using API.Components;
-
-namespace API.Interfaces
+namespace Service.Interfaces
 {
     internal interface IHttpMessage
     {

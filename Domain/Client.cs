@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace Domain
+﻿namespace Domain
 {
-    public class Client
+    public interface Client
     {
-        public String Name { get; set; }
-        public String Segment { get; set; }
+        int Id { get; set; }
+        string Password { get; set; }
+        string Name { get; set; }
+        ClientSegment Segment { get; set; }
     }
 }

@@ -1,22 +1,11 @@
-﻿using System;
-using System.Reflection;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-using static Terminal.Controllers.ApiController;
-using static Terminal.Controllers.NavigationController;
-using static Terminal.Controllers.SessionController;
+using static Terminal.Helpers.NavigationHelper;
+using static Terminal.Helpers.SessionHelper;
 
 namespace Terminal.Pages
 {
@@ -25,19 +14,19 @@ namespace Terminal.Pages
     /// </summary>
     public partial class ProductReset : Page
     {
-        public IEnumerable<dynamic> Products { get; set; }
+        public IEnumerable<Product> Products { get; set; }
 
         public ProductReset()
         {
-            this.Products = new List<dynamic>();
+            Products = new List<Product>();
             InitializeComponent();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Products = await GetProducts();
-            this.DataContext = this;
-            this.UpdateLayout();
+            Products = await GetProducts();
+            DataContext = this;
+            UpdateLayout();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -51,12 +40,12 @@ namespace Terminal.Pages
 
             try
             {
-                string productNumber = (this.productsBox.SelectedItem as dynamic).number;
-                var result = await ResetProductByProductNumber(productNumber);
+                Product selected = (this.productsBox.SelectedItem as Product);
+                Domain.ProductReset result = await ProductReset(selected.Number);
 
-                if (result.error != 0)
+                if (result != null && result.Error < 0)
                 {
-                    string errorDescription = result["error-description"];
+                    string errorDescription = result.ErrorDescription;
 
                     if (errorDescription == "")
                     {

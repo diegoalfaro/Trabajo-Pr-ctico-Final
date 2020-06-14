@@ -10,11 +10,11 @@
       Title="Movements" Loaded="Page_Loaded">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ListView x:Name="listView" Height="260" Margin="0, 0, 0, 20" ItemsSource="{Binding MovementList}">
+        <ListView x:Name="listView" Height="260" Margin="0, 0, 0, 20" ItemsSource="{Binding AccountMovementList}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="260"  Header="Fecha" DisplayMemberBinding="{Binding date}"/>
-                    <GridViewColumn Width="260" Header="Monto" DisplayMemberBinding="{Binding ammount}"/>
+                    <GridViewColumn Width="260"  Header="Fecha" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Width="260" Header="Monto" DisplayMemberBinding="{Binding Ammount}"/>
                 </GridView>
             </ListView.View>
         </ListView>
