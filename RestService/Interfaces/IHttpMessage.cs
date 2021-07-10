@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Service.Interfaces
+namespace RestService.Interfaces
 {
     internal interface IHttpMessage
     {

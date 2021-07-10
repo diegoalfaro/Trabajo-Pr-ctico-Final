@@ -1,4 +1,4 @@
-﻿namespace Service.Interfaces
+﻿namespace RestService.Interfaces
 {
     internal interface IResponse : IHttpMessage
     {

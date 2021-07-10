@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 
 using System.Net.Http;
-using Service.Interfaces;
+using RestService.Interfaces;
 
-namespace Service.Common
+namespace RestService.Common
 {
     public class Request : IRequest
     {

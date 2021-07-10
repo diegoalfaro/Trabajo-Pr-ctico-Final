@@ -1,7 +1,7 @@
-﻿using Service.Common;
+﻿using RestService.Common;
 using System.Collections.Generic;
 
-namespace Service.Interfaces
+namespace RestService.Interfaces
 {
     internal interface IRequest : IHttpMessage
     {

@@ -16,13 +16,11 @@ namespace Terminal
     {
         public App()
         {
-            /*
             this.DispatcherUnhandledException += (sender, e) =>
             {
                 MessageBox.Show(e.Exception.Message);
                 e.Handled = true;
             };
-            */
         }
     }
 }

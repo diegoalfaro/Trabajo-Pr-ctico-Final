@@ -176,6 +176,10 @@
       <Project>{3adbff38-915c-4115-9cdd-81c0cad9733a}</Project>
       <Name>KeyPad</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RestService\RestService.csproj">
+      <Project>{8c9883b8-601e-441a-8811-1a199472602d}</Project>
+      <Name>RestService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{79218a34-7532-428c-980d-f6a456f11d91}</Project>
       <Name>Service</Name>

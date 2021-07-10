@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Service.Converters;
+using RestService.Converters;
 using System.Collections.Generic;
 
-namespace Service.DTO
+namespace RestService.DTO
 {
     [JsonConverter(typeof(JsonPathConverter))]
     class ProductListDTO

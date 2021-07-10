@@ -2,19 +2,18 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Domain;
+using Service;
 using Newtonsoft.Json;
-using Service.Common;
-using Service.Connectors;
-using Service.DTO;
-using Service.Interfaces;
+using RestService.Common;
+using RestService.DTO;
 
-namespace Service
+namespace RestService
 {
-    public class ApiService: IApiService
+    public class RestApiService: IApiService
     {
         private Connector Connector { get; set; }
 
-        public ApiService(string pBaseURL)
+        public RestApiService(string pBaseURL)
         {
             Connector = new Connector(pBaseURL);
         }

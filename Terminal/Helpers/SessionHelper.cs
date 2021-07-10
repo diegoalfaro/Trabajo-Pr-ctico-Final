@@ -1,6 +1,6 @@
 ﻿using Domain;
 using Service;
-using Service.Interfaces;
+using RestService;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,7 +15,7 @@ namespace Terminal.Helpers
 
         static SessionHelper()
         {
-            ApiService = new ApiService(Default.API_URI);
+            ApiService = new RestApiService(Default.API_URI);
         }
 
         static public bool IsLogged()

@@ -1,7 +1,7 @@
 ﻿using Domain;
 using Newtonsoft.Json;
 
-namespace Service.DTO
+namespace RestService.DTO
 {
     class AccountMovementDTO : AccountMovement
     {

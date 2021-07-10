@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 
 using System.Net.Http;
 
-using Service.Common;
-
-namespace Service.Connectors
+namespace RestService.Common
 {
     public class Connector
     {

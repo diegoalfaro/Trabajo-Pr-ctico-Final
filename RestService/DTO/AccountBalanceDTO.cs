@@ -1,8 +1,8 @@
 ﻿using Domain;
 using Newtonsoft.Json;
-using Service.Converters;
+using RestService.Converters;
 
-namespace Service.DTO
+namespace RestService.DTO
 {
     [JsonConverter(typeof(JsonPathConverter))]
     class AccountBalanceDTO: AccountBalance

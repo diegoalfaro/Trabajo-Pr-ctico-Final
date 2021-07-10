@@ -1,4 +1,4 @@
-﻿namespace Service.Common
+﻿namespace RestService.Common
 {
     public enum Method
     {

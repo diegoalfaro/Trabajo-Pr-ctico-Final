@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Service.Interfaces;
+using RestService.Interfaces;
 
-namespace Service.Common
+namespace RestService.Common
 {
     public class Response : IResponse
     {

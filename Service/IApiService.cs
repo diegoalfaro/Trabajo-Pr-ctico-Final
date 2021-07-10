@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Service.Interfaces
+namespace Service
 {
     public interface IApiService
     {
