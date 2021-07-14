@@ -2,32 +2,37 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace KeyPad
 {
     public partial class Keypad : Window,INotifyPropertyChanged
     {
-        public object Input { get; set; }
+        public Control Input { get; set; }
 
         public String Value {
             get
             {
-                if (this.Input as TextBox != null) return ((TextBox)this.Input).Text;
-                if (this.Input as PasswordBox != null) return ((PasswordBox)this.Input).Password;
+                if (this.Input is TextBox) return (this.Input as TextBox).Text;
+                if (this.Input is PasswordBox) return (this.Input as PasswordBox).Password;
                 return "";
             }
             set
             {
-                if (this.Input as TextBox != null) ((TextBox)this.Input).Text = value;
-                if (this.Input as PasswordBox != null) ((PasswordBox)this.Input).Password = value;
+                if (this.Input is TextBox) (this.Input as TextBox).Text = value;
+                if (this.Input is PasswordBox) (this.Input as PasswordBox).Password = value;
             }
         }
 
-        public Keypad(object pInput)
+        public Keypad(Control pInput)
         {
             InitializeComponent();
             this.Input = pInput;
             this.DataContext = this;
+            this.Deactivated += (object sender, EventArgs e) => {
+                FocusManager.SetFocusedElement(FocusManager.GetFocusScope(this.Input), null);
+                Keyboard.ClearFocus();
+            };
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

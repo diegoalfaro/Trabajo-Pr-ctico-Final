@@ -3,10 +3,18 @@
   <Profiles />
   <Settings>
     <Setting Name="SHOW_KEYPAD" Type="System.Boolean" Scope="Application">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="API_URI" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://my-json-server.typicode.com/utn-frcu-isi-tdp/tas-db/</Value>
+    </Setting>
+    <Setting Name="DB_CONNECTION" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Server=(LocalDB)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=|DataDirectory|\Database.mdf&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Server=(LocalDB)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=|DataDirectory|\Database.mdf</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,8 +1,8 @@
 ﻿namespace Domain
 {
-    public interface AccountBalance
+    public class AccountBalance
     {
-        int Id { get; set; }
-        double Balance { get; set; }
+        public int AccountBalanceId { get; set; }
+        public double Balance { get; set; }
     }
 }

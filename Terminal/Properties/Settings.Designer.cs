@@ -25,7 +25,7 @@ namespace Terminal.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SHOW_KEYPAD {
             get {
                 return ((bool)(this["SHOW_KEYPAD"]));
@@ -39,6 +39,17 @@ namespace Terminal.Properties {
         public string API_URI {
             get {
                 return ((string)(this["API_URI"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=(LocalDB)\\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=|DataDire" +
+            "ctory|\\Database.mdf")]
+        public string DB_CONNECTION {
+            get {
+                return ((string)(this["DB_CONNECTION"]));
             }
         }
     }

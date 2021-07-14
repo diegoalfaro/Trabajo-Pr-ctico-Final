@@ -1,10 +1,14 @@
-﻿namespace Domain
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain
 {
-    public interface Client
+    public class Client
     {
-        int Id { get; set; }
-        string Password { get; set; }
-        string Name { get; set; }
-        ClientSegment Segment { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ClientId { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public ClientSegment Segment { get; set; }
     }
 }

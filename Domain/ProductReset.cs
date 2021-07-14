@@ -1,9 +1,9 @@
 ﻿namespace Domain
 {
-    public interface ProductReset
+    public class ProductReset
     {
-        string Number { get; set; }
-        int Error { get; set; }
-        string ErrorDescription { get; set; }
+        public string Number { get; set; }
+        public int Error { get; set; }
+        public string ErrorDescription { get; set; }
     }
 }

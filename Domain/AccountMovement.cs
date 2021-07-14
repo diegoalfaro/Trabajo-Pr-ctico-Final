@@ -1,8 +1,8 @@
 ﻿namespace Domain
 {
-    public interface AccountMovement
+    public class AccountMovement
     {
-        string Date { get; set; }
-        double Ammount { get; set; }
+        public string Date { get; set; }
+        public double Ammount { get; set; }
     }
 }

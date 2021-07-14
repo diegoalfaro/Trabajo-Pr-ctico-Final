@@ -20,14 +20,6 @@ namespace Terminal
 
             Point position = pControl.PointToScreen(new Point(0d, 0d));
             keypad.Top = position.Y + pControl.ActualHeight;
-
-            pControl.LostKeyboardFocus += (a, b) => {
-                keypad.Close();
-            };
-
-            keypad.Deactivated += (a, b) => {
-                keypad.Close();
-            };
         }
 
         public MainWindow()
@@ -56,11 +48,8 @@ namespace Terminal
 
         private void Window_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (Default.SHOW_KEYPAD) {
+            if (Default.SHOW_KEYPAD && (e.NewFocus is TextBox || e.NewFocus is PasswordBox)) {
                 e.Handled = true;
-
-                if ((e.NewFocus as TextBox) != null && (e.NewFocus as PasswordBox) != null) return;
-
                 CreateKeyPad(e.NewFocus as Control);
             }
         }

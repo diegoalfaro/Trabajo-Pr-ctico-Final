@@ -6,7 +6,7 @@ using RestService.Converters;
 namespace RestService.DTO
 {
     [JsonConverter(typeof(JsonPathConverter))]
-    class ClientDTO: Client
+    class ClientDTO
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -20,5 +20,15 @@ namespace RestService.DTO
         [JsonProperty("response.client.segment")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ClientSegment Segment { get; set; }
+
+        public static explicit operator Client(ClientDTO dto)
+        {
+            return new Client() {
+                ClientId = dto.Id,
+                Password = dto.Password,
+                Name = dto.Name,
+                Segment = dto.Segment
+            };
+        }
     }
 }

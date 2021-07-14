@@ -5,7 +5,7 @@ using RestService.Converters;
 namespace RestService.DTO
 {
     [JsonConverter(typeof(JsonPathConverter))]
-    public class ProductResetDTO : ProductReset
+    class ProductResetDTO
     {
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -15,5 +15,15 @@ namespace RestService.DTO
 
         [JsonProperty("response.error-description")]
         public string ErrorDescription { get; set; }
+
+        public static explicit operator ProductReset(ProductResetDTO dto)
+        {
+            return new ProductReset()
+            {
+                Number = dto.Number,
+                Error = dto.Error,
+                ErrorDescription = dto.ErrorDescription,
+            };
+        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace Domain
 {
-    public interface Product
+    public class Product
     {
-        string Number { get; set; }
-        string Name { get; set; }
-        string Type { get; set; }
+        public string Number { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
     }
 }

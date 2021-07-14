@@ -32,7 +32,7 @@ namespace RestService
             Response response = await Connector.SendAsync<Response>(request);
             List<ClientDTO> dto = JsonConvert.DeserializeObject<List<ClientDTO>>(response.Body);
 
-            if (dto != null && dto.Count > 0) return dto[0];
+            if (dto != null && dto.Count > 0) return (Client)dto[0];
             else return null;
         }
 
@@ -50,7 +50,7 @@ namespace RestService
             Response response = await Connector.SendAsync<Response>(request);
             List<ProductListDTO> dto = JsonConvert.DeserializeObject<List<ProductListDTO>>(response.Body);
 
-            if (dto != null && dto.Count > 0 && dto[0].Products.Count > 0) return (from product in dto[0].Products select product as Product).ToList();
+            if (dto != null && dto.Count > 0 && dto[0].Products.Count > 0) return (from product in dto[0].Products select (Product)product).ToList();
             else return null;
         }
 
@@ -68,7 +68,7 @@ namespace RestService
             Response response = await Connector.SendAsync<Response>(request);
             List<AccountBalanceDTO> dto = JsonConvert.DeserializeObject<List<AccountBalanceDTO>>(response.Body);
 
-            if (dto != null && dto.Count > 0) return dto[0];
+            if (dto != null && dto.Count > 0) return (AccountBalance)dto[0];
             else return null;
         }
 
@@ -86,7 +86,11 @@ namespace RestService
             Response response = await Connector.SendAsync<Response>(request);
             List<AccountMovementListDTO> dto = JsonConvert.DeserializeObject<List<AccountMovementListDTO>>(response.Body);
 
-            if (dto != null && dto.Count > 0 && dto[0].Movements.Count > 0) return (from movement in dto[0].Movements select movement as AccountMovement).ToList();
+            if (dto != null && dto.Count > 0 && dto[0].Movements.Count > 0) return (
+                from movement
+                in dto[0].Movements
+                select (AccountMovement)movement
+            ).ToList();
             else return null;
         }
 
@@ -104,7 +108,7 @@ namespace RestService
             Response response = await Connector.SendAsync<Response>(request);
             List<ProductResetDTO> dto = JsonConvert.DeserializeObject<List<ProductResetDTO>>(response.Body);
 
-            if (dto != null && dto.Count > 0) return dto[0];
+            if (dto != null && dto.Count > 0) return (ProductReset)dto[0];
             else return null;
         }
     }

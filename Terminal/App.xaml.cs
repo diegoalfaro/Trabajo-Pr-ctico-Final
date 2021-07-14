@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Input;
+using Terminal.Contexts;
 
 namespace Terminal
 {
@@ -21,6 +17,14 @@ namespace Terminal
                 MessageBox.Show(e.Exception.Message);
                 e.Handled = true;
             };
+
+            var DataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+
+            if (!Directory.Exists(DataDirectory)) {
+                Directory.CreateDirectory(DataDirectory);
+            }
+            
+            AppDomain.CurrentDomain.SetData("DataDirectory", DataDirectory);
         }
     }
 }

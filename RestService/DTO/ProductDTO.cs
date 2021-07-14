@@ -1,9 +1,11 @@
 ﻿using Domain;
 using Newtonsoft.Json;
+using RestService.Converters;
 
 namespace RestService.DTO
 {
-    class ProductDTO : Product
+    [JsonConverter(typeof(JsonPathConverter))]
+    class ProductDTO
     {
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -13,5 +15,15 @@ namespace RestService.DTO
 
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        public static explicit operator Product(ProductDTO dto)
+        {
+            return new Product()
+            {
+                Number = dto.Number,
+                Name = dto.Name,
+                Type = dto.Type,
+            };
+        }
     }
 }
