@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Terminal"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
-             StartupUri="MainWindow.xaml">
+             Startup="OnStartup">
     <Application.Resources>
         <ResourceDictionary>
             <fa:CssClassNameConverter Mode="FromIconToString" x:Key="FromIconClassNameConverter" />

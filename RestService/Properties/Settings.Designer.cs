@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Terminal.Properties {
+namespace RestService.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,21 +25,11 @@ namespace Terminal.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SHOW_KEYPAD {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://my-json-server.typicode.com/utn-frcu-isi-tdp/tas-db/")]
+        public string API_URL {
             get {
-                return ((bool)(this["SHOW_KEYPAD"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=(LocalDB)\\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=|DataDire" +
-            "ctory|\\Database.mdf")]
-        public string DB_CONNECTION {
-            get {
-                return ((string)(this["DB_CONNECTION"]));
+                return ((string)(this["API_URL"]));
             }
         }
     }

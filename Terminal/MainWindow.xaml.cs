@@ -2,7 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-
+using Terminal.Helpers;
+using Terminal.Pages;
 using static Terminal.Properties.Settings;
 
 namespace Terminal
@@ -22,8 +23,11 @@ namespace Terminal
             keypad.Top = position.Y + pControl.ActualHeight;
         }
 
-        public MainWindow()
+        private readonly NavigationHelper NavigationHelper;
+
+        public MainWindow(NavigationHelper navigationHelper)
         {
+            NavigationHelper = navigationHelper;
             InitializeComponent();
             Keyboard.DefaultRestoreFocusMode = RestoreFocusMode.None;
             Keyboard.PrimaryDevice.DefaultRestoreFocusMode = RestoreFocusMode.None;
@@ -52,6 +56,12 @@ namespace Terminal
                 e.Handled = true;
                 CreateKeyPad(e.NewFocus as Control);
             }
+        }
+
+        private void frame_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.ConfigureNavigationFrame();
+            NavigationHelper.NavigateTo<Login>();
         }
     }
 }

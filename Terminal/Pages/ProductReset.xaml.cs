@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-
-using static Terminal.Helpers.NavigationHelper;
-using static Terminal.Helpers.SessionHelper;
+using Terminal.Helpers;
 
 namespace Terminal.Pages
 {
@@ -14,34 +12,39 @@ namespace Terminal.Pages
     /// </summary>
     public partial class ProductReset : Page
     {
+        private readonly NavigationHelper NavigationHelper;
+        private readonly ProductHelper ProductHelper;
+
         public IEnumerable<Product> Products { get; set; }
 
-        public ProductReset()
+        public ProductReset(NavigationHelper navigationHelper, ProductHelper productHelper)
         {
+            NavigationHelper = navigationHelper;
+            ProductHelper = productHelper;
             Products = new List<Product>();
             InitializeComponent();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Products = await GetProducts();
+            Products = await ProductHelper.GetProducts();
             DataContext = this;
             UpdateLayout();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            GoBack();
+            NavigationHelper.GoBack();
         }
 
         private async void resetButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowLoading();
+            NavigationHelper.ShowLoading();
 
             try
             {
                 Product selected = (this.productsBox.SelectedItem as Product);
-                Domain.ProductReset result = await ProductReset(selected.Number);
+                Domain.ProductReset result = await ProductHelper.ProductReset(selected.Number);
 
                 if (result != null && result.Error < 0)
                 {
@@ -60,7 +63,7 @@ namespace Terminal.Pages
 
                 else
                 {
-                    NavigateTo("ProductResetResult", new {
+                    NavigationHelper.NavigateTo<ProductResetResult>(new {
                         RemoveBackEntry = true
                     });
                 }
@@ -68,7 +71,7 @@ namespace Terminal.Pages
 
             catch (Exception pEx)
             {
-                ShowError(new
+                NavigationHelper.ShowError(new
                 {
                     Text = pEx.Message,
                     BackPage = this,

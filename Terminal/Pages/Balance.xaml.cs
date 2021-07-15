@@ -1,9 +1,7 @@
 ﻿using Domain;
 using System.Windows;
 using System.Windows.Controls;
-
-using static Terminal.Helpers.NavigationHelper;
-using static Terminal.Helpers.SessionHelper;
+using Terminal.Helpers;
 
 namespace Terminal.Pages
 {
@@ -12,16 +10,21 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Balance : Page
     {
+        private readonly NavigationHelper NavigationHelper;
+        private readonly AccountHelper AccountHelper;
+
         public double CurrentBalance { get; set; }
 
-        public Balance()
+        public Balance(NavigationHelper navigationHelper, AccountHelper accountHelper)
         {
+            NavigationHelper = navigationHelper;
+            AccountHelper = accountHelper;
             InitializeComponent();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            AccountBalance result = await GetBalance();
+            AccountBalance result = await AccountHelper.GetBalance();
 
             if (result != null)
             {
@@ -33,7 +36,7 @@ namespace Terminal.Pages
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            GoBack();
+            NavigationHelper.GoBack();
         }
     }
 }

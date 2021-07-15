@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
+using Terminal.Pages;
 
 namespace Terminal.Helpers
 {
-    public static class NavigationHelper
+    public class NavigationHelper
     {
-        static NavigationHelper()
+        private readonly IServiceProvider ServiceProvider;
+
+        public NavigationHelper(IServiceProvider serviceProvider)
+        {
+            ServiceProvider = serviceProvider;
+        }
+
+        public void ConfigureNavigationFrame()
         {
             var frame = GetNavigationFrame();
 
@@ -19,60 +28,53 @@ namespace Terminal.Helpers
                         RemoveBackEntry();
                     }
                 }
-                catch (Exception) {}
+                catch (Exception) { }
             };
         }
 
-        static public Frame GetNavigationFrame()
+        public Frame GetNavigationFrame()
         {
-            return (App.Current.MainWindow as MainWindow).frame;
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+            return mainWindow.frame;
         }
 
-        static private string GetPagePath(string pPageName)
+        public void NavigateTo<TPage>(dynamic pParams = null) where TPage : Page
         {
-            return $"/Pages/{pPageName}.xaml";
+            var page = ServiceProvider.GetRequiredService<TPage>();
+            NavigateTo(page, pParams);
         }
 
-        static public void NavigateTo(String pPageName, dynamic pParams = null)
+        public void NavigateTo(Page pPageObject, dynamic pParams = null)
         {
             var frame = GetNavigationFrame();
-            var uri = new Uri(GetPagePath(pPageName), UriKind.Relative);
-
-            frame.Navigate(uri, pParams);
-        }
-
-        static public void NavigateTo(Page pPageObject, dynamic pParams = null)
-        {
-            var frame = GetNavigationFrame();
-
             frame.Navigate(pPageObject, pParams);
         }
 
-        static public void RemoveBackEntry()
+        public void RemoveBackEntry()
         {
             var frame = GetNavigationFrame();
             frame.RemoveBackEntry();
         }
 
-        static public bool CanGoBack()
+        public bool CanGoBack()
         {
             return GetNavigationFrame().CanGoBack;
         }
 
-        static public void GoBack()
+        public void GoBack()
         {
             GetNavigationFrame().GoBack();
         }
 
-        static public void ShowLoading()
+        public void ShowLoading()
         {
-            NavigateTo("Loading");
+            NavigateTo<Loading>();
         }
 
-        static public void ShowError(dynamic pParams)
+        public void ShowError(dynamic pParams)
         {
             var frame = GetNavigationFrame();
-            NavigateTo("Error", pParams);
+            NavigateTo<Error>(pParams);
         }
     }
 }

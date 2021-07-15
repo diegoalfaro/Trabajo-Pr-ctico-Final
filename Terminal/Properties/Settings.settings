@@ -5,9 +5,6 @@
     <Setting Name="SHOW_KEYPAD" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="API_URI" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://my-json-server.typicode.com/utn-frcu-isi-tdp/tas-db/</Value>
-    </Setting>
     <Setting Name="DB_CONNECTION" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;

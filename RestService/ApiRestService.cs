@@ -2,20 +2,21 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Domain;
-using Service;
 using Newtonsoft.Json;
 using RestService.Common;
 using RestService.DTO;
+using Service;
+using static RestService.Properties.Settings;
 
 namespace RestService
 {
-    public class RestApiService: IApiService
+    public class ApiRestService: IApiService
     {
         private Connector Connector { get; set; }
 
-        public RestApiService(string pBaseURL)
+        public ApiRestService()
         {
-            Connector = new Connector(pBaseURL);
+            Connector = new Connector(Default.API_URL);
         }
 
         public async Task<Client> GetClientInfo(int pClientId, int pPassword)

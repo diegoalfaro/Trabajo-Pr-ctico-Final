@@ -2,8 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-using static Terminal.Helpers.NavigationHelper;
-using static Terminal.Helpers.SessionHelper;
+using Terminal.Helpers;
 
 namespace Terminal.Pages
 {
@@ -12,8 +11,13 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Login : Page
     {
-        public Login()
+        private readonly NavigationHelper NavigationHelper;
+        private readonly AuthHelper AuthHelper;
+
+        public Login(NavigationHelper navigationHelper, AuthHelper authHelper)
         {
+            NavigationHelper = navigationHelper;
+            AuthHelper = authHelper;
             InitializeComponent();
         }
 
@@ -36,20 +40,21 @@ namespace Terminal.Pages
                 }
 
                 loading = true;
-                ShowLoading();
-                await TryLogin(id, password);
+                NavigationHelper.ShowLoading();
 
-                if (!IsLogged())
+                bool result = await AuthHelper.Login(id, password);
+
+                if (!result)
                 {
                     throw new Exception("Comprobar los datos ingresados");
                 }
 
-                NavigateTo("Main");
+                NavigationHelper.NavigateTo<Main>();
             }
 
             catch (Exception pEx)
             {
-                ShowError(new
+                NavigationHelper.ShowError(new
                 {
                     Text = pEx.Message,
                     BackPage = this,

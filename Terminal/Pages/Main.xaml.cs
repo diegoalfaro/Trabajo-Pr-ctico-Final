@@ -1,8 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-using static Terminal.Helpers.NavigationHelper;
-using static Terminal.Helpers.SessionHelper;
+using Terminal.Helpers;
 
 namespace Terminal.Pages
 {
@@ -11,33 +10,38 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Main : Page
     {
-        public string WelcomeText => $"Bienvenido, {CurrentClient.Name}";
+        private readonly NavigationHelper NavigationHelper;
+        private readonly AuthHelper AuthHelper;
 
-        public Main()
+        public string WelcomeText => $"Bienvenido, {AuthHelper.CurrentClient.Name}";
+
+        public Main(NavigationHelper navigationHelper, AuthHelper authHelper)
         {
+            NavigationHelper = navigationHelper;
+            AuthHelper = authHelper;
             InitializeComponent();
             DataContext = this;
         }
 
         private void pinButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateTo("ProductReset");
+            NavigationHelper.NavigateTo<ProductReset>();
         }
 
         private void balanceButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateTo("Balance");
+            NavigationHelper.NavigateTo<Balance>();
         }
 
         private void movementsButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigateTo("Movements");
+            NavigationHelper.NavigateTo<Movements>();
         }
 
-        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        private async void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            Logout();
-            NavigateTo("Login");
+            await AuthHelper.Logout();
+            NavigationHelper.NavigateTo<Login>();
         }
     }
 }

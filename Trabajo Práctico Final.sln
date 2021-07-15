@@ -15,8 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\RestService.csproj", "{8C9883B8-601E-441A-8811-1A199472602D}"
 	ProjectSection(ProjectDependencies) = postProject
-		{79218A34-7532-428C-980D-F6A456F11D91} = {79218A34-7532-428C-980D-F6A456F11D91}
 		{7A544087-E546-4FD0-8C0A-ADEED63A4C1A} = {7A544087-E546-4FD0-8C0A-ADEED63A4C1A}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9903F182-8DA0-45A5-A5DD-105681F57FF4}"
+	ProjectSection(SolutionItems) = preProject
+		Leeme.txt = Leeme.txt
 	EndProjectSection
 EndProject
 Global
