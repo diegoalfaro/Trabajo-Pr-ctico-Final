@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using KeyPad;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -13,14 +14,16 @@ namespace Terminal
     /// </summary>
     public partial class MainWindow : Window
     {
-        static void CreateKeyPad(Control pControl)
+        static Keypad CreateKeyPad(Control pControl)
         {
-            var keypad = new KeyPad.Keypad(pControl);
-
-            keypad.Show();
-
             Point position = pControl.PointToScreen(new Point(0d, 0d));
+
+            var keypad = new Keypad(pControl);
+            keypad.Show();
             keypad.Top = position.Y + pControl.ActualHeight;
+            keypad.Left = position.X;
+
+            return keypad;
         }
 
         private readonly NavigationHelper NavigationHelper;
@@ -52,9 +55,11 @@ namespace Terminal
 
         private void Window_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (Default.SHOW_KEYPAD && (e.NewFocus is TextBox || e.NewFocus is PasswordBox)) {
+            var component = e.NewFocus;
+
+            if (Default.SHOW_KEYPAD && (component is TextBox || component is PasswordBox)) {
                 e.Handled = true;
-                CreateKeyPad(e.NewFocus as Control);
+                CreateKeyPad(component as Control);
             }
         }
 

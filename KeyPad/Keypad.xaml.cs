@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace KeyPad
 {
-    public partial class Keypad : Window,INotifyPropertyChanged
+    public partial class Keypad : Window, INotifyPropertyChanged
     {
         public Control Input { get; set; }
 

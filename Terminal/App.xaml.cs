@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows;
 using Terminal.Helpers;
 using Terminal.Pages;
+using static Terminal.Properties.Settings;
 
 namespace Terminal
 {
@@ -14,31 +15,14 @@ namespace Terminal
     /// </summary>
     public partial class App : Application
     {
+        const string DATA_DIRECTORY_KEY = "DataDirectory";
+
         private readonly ServiceProvider ServiceProvider;
 
-        public App()
+        private static ServiceProvider CreateServiceProvider()
         {
-            var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
-            ServiceProvider = serviceCollection.BuildServiceProvider();
+            var services = new ServiceCollection();
 
-            this.DispatcherUnhandledException += (sender, e) =>
-            {
-                MessageBox.Show(e.Exception.Message);
-                e.Handled = true;
-            };
-
-            var DataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
-
-            if (!Directory.Exists(DataDirectory)) {
-                Directory.CreateDirectory(DataDirectory);
-            }
-            
-            AppDomain.CurrentDomain.SetData("DataDirectory", DataDirectory);
-        }
-
-        private void ConfigureServices(IServiceCollection services)
-        {
             services.AddSingleton<IApiService>(new ApiRestService());
 
             services.AddSingleton<NavigationHelper>();
@@ -55,6 +39,36 @@ namespace Terminal
             services.AddTransient<Movements>();
             services.AddTransient<ProductReset>();
             services.AddTransient<ProductResetResult>();
+
+            return services.BuildServiceProvider();
+        }
+
+        public App()
+        {
+            ConfigureExceptionHandler();
+            ConfigureDataDirectory();
+            ServiceProvider = CreateServiceProvider();
+        }
+
+        private void ConfigureExceptionHandler()
+        {
+            this.DispatcherUnhandledException += (sender, e) =>
+            {
+                MessageBox.Show(e.Exception.Message);
+                e.Handled = true;
+            };
+        }
+
+        private void ConfigureDataDirectory()
+        {
+            var DataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Default.DATA_DIRECTORY);
+
+            if (!Directory.Exists(DataDirectory))
+            {
+                Directory.CreateDirectory(DataDirectory);
+            }
+
+            AppDomain.CurrentDomain.SetData(DATA_DIRECTORY_KEY, DataDirectory);
         }
 
         private void OnStartup(object sender, StartupEventArgs e)

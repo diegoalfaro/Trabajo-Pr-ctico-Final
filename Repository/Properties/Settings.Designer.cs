@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Terminal.Properties {
+namespace Repository.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,19 +25,21 @@ namespace Terminal.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SHOW_KEYPAD {
+        [global::System.Configuration.DefaultSettingValueAttribute("name=Repository.Properties.Settings.CONNECTION_STRING")]
+        public string DB_CONNECTION {
             get {
-                return ((bool)(this["SHOW_KEYPAD"]));
+                return ((string)(this["DB_CONNECTION"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data")]
-        public string DATA_DIRECTORY {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=(LocalDB)\\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=|DataDire" +
+            "ctory|\\Database.mdf")]
+        public string CONNECTION_STRING {
             get {
-                return ((string)(this["DATA_DIRECTORY"]));
+                return ((string)(this["CONNECTION_STRING"]));
             }
         }
     }

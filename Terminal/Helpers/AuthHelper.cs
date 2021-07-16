@@ -1,8 +1,8 @@
 ﻿using Domain;
+using Repository;
 using Service;
 using System;
 using System.Threading.Tasks;
-using Terminal.Contexts;
 
 namespace Terminal.Helpers
 {
@@ -30,10 +30,10 @@ namespace Terminal.Helpers
                     StartDate = DateTime.Now
                 };
 
-                using (var context = new DataContext()) {
-                    context.Clients.Add(client);
-                    context.Sessions.Add(session);
-                    await context.SaveChangesAsync();
+                using (var unitOfWork = new DataUnitOfWork()) {
+                    unitOfWork.ClientRepository.Upsert(client);
+                    unitOfWork.SessionRepository.Insert(session);
+                    await unitOfWork.SaveAsync();
                 }
 
                 CurrentSession = session;
@@ -46,13 +46,10 @@ namespace Terminal.Helpers
 
         public async Task Logout()
         {
-            using (var context = new DataContext())
-            {
-                Session session = await context.Sessions.FindAsync(CurrentSession.SessionId);
-                if (session != null) {
-                    session.EndDate = DateTime.Now;
-                }
-                await context.SaveChangesAsync();
+            using (var unitOfWork = new DataUnitOfWork()) {
+                CurrentSession.EndDate = DateTime.Now;
+                unitOfWork.SessionRepository.Update(CurrentSession);
+                await unitOfWork.SaveAsync();
             }
 
             CurrentSession = null;
