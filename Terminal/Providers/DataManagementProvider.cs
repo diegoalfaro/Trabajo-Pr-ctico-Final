@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Terminal.Providers
 {
-    class DataManagementProvider : IDataManagementProvider
+    public class DataManagementProvider : IDataManagementProvider
     {
         public DataManagementProvider()
         {

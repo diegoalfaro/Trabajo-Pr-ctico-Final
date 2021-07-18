@@ -15,8 +15,6 @@ namespace Terminal
     /// </summary>
     public partial class App : Application
     {
-        const string DATA_DIRECTORY_KEY = "DataDirectory";
-
         private readonly IServiceProvider ServiceProvider;
 
         private static ServiceProvider CreateServiceProvider()
@@ -73,7 +71,7 @@ namespace Terminal
                 Directory.CreateDirectory(DataDirectory);
             }
 
-            AppDomain.CurrentDomain.SetData(DATA_DIRECTORY_KEY, DataDirectory);
+            AppDomain.CurrentDomain.SetData(Default.DATA_DIRECTORY_KEY, DataDirectory);
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
