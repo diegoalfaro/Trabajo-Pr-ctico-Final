@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using Domain;
@@ -14,15 +12,27 @@ namespace UnitTests
     public class ProductUnitTest: BaseUnitTest
     {
         [TestInitialize]
-        public void Initialize()
+        public async Task Initialize()
         {
-            AuthProvider.Login(12345678, 1234);
+            await AuthProvider.Login(12345678, 1234);
         }
 
         [TestMethod]
         public async Task GetProductsTest()
         {
-            Assert.IsTrue(true);
+            var products = await ProductProvider.GetProducts();
+            Assert.IsInstanceOfType(products, typeof(IEnumerable<Product>));
+        }
+
+        [TestMethod]
+        public async Task ResetProduct()
+        {
+            var products = await ProductProvider.GetProducts();
+            products.GetEnumerator().Reset();
+            products.GetEnumerator().MoveNext();
+            var product = products.GetEnumerator().Current;
+            var productReset = await ProductProvider.ResetProduct(product.Number);
+            Assert.IsInstanceOfType(productReset, typeof(IEnumerable<ProductReset>));
         }
     }
 }
