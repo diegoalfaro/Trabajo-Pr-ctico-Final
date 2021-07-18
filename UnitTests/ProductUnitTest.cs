@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
+using System.Linq;
 using Domain;
 
 namespace UnitTests
@@ -28,11 +29,9 @@ namespace UnitTests
         public async Task ResetProduct()
         {
             var products = await ProductProvider.GetProducts();
-            products.GetEnumerator().Reset();
-            products.GetEnumerator().MoveNext();
-            var product = products.GetEnumerator().Current;
+            var product = products.FirstOrDefault();
             var productReset = await ProductProvider.ResetProduct(product.Number);
-            Assert.IsInstanceOfType(productReset, typeof(IEnumerable<ProductReset>));
+            Assert.IsInstanceOfType(productReset, typeof(ProductReset));
         }
     }
 }
