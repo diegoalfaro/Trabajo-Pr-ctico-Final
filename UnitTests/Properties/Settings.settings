@@ -8,5 +8,11 @@
     <Setting Name="DATA_DIRECTORY" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Data</Value>
     </Setting>
+    <Setting Name="USERNAME" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">12345678</Value>
+    </Setting>
+    <Setting Name="PASSWORD" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1234</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

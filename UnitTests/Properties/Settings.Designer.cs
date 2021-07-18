@@ -40,5 +40,23 @@ namespace UnitTests.Properties {
                 return ((string)(this["DATA_DIRECTORY"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12345678")]
+        public int USERNAME {
+            get {
+                return ((int)(this["USERNAME"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1234")]
+        public int PASSWORD {
+            get {
+                return ((int)(this["PASSWORD"]));
+            }
+        }
     }
 }

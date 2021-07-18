@@ -1,18 +1,14 @@
-﻿using RestService;
-using Services;
-using System;
+﻿using System;
 using System.IO;
+using Terminal;
 using Terminal.Providers;
 using static UnitTests.Properties.Settings;
 
-namespace UnitTests
+namespace UnitTests.Common
 {
     public abstract class BaseUnitTest
     {
-        protected IAuthService AuthService;
-        protected IProductService ProductService;
-        protected IClientService ClientService;
-        protected IAccountService AccountService;
+        AppServiceProvider AppServiceProvider;
 
         protected IDataManagementProvider DataManagementProvider;
         protected IAuthProvider AuthProvider;
@@ -22,6 +18,8 @@ namespace UnitTests
 
         public BaseUnitTest()
         {
+            AppServiceProvider = new AppServiceProvider();
+
             ConfigureDataDirectory();
             ConfigureDependencies();
         }
@@ -40,17 +38,11 @@ namespace UnitTests
 
         private void ConfigureDependencies()
         {
-            var apiService = new ApiRestService();
-            AuthService = apiService;
-            ProductService = apiService;
-            ClientService = apiService;
-            AccountService = apiService;
-
-            DataManagementProvider = new DataManagementProvider();
-            AuthProvider = new AuthProvider(AuthService, DataManagementProvider);
-            UserActionProvider = new UserActionProvider(AuthProvider, DataManagementProvider);
-            ProductProvider = new ProductProvider(ProductService, AuthProvider, UserActionProvider);
-            AccountProvider = new AccountProvider(AccountService, AuthProvider, UserActionProvider);
+            DataManagementProvider = AppServiceProvider.GetRequiredService<IDataManagementProvider>();
+            AuthProvider = AppServiceProvider.GetRequiredService<IAuthProvider>();
+            UserActionProvider = AppServiceProvider.GetRequiredService<IUserActionProvider>();
+            ProductProvider = AppServiceProvider.GetRequiredService<IProductProvider>();
+            AccountProvider = AppServiceProvider.GetRequiredService<IAccountProvider>();
         }
     }
 }

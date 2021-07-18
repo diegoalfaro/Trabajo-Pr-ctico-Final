@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using System.Linq;
 using Domain;
+using UnitTests.Common;
+using static UnitTests.Properties.Settings;
 
 namespace UnitTests
 {
@@ -15,7 +17,7 @@ namespace UnitTests
         [TestInitialize]
         public async Task Initialize()
         {
-            await AuthProvider.Login(12345678, 1234);
+            await AuthProvider.Login(Default.USERNAME, Default.PASSWORD);
         }
 
         [TestMethod]
