@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Terminal"
         mc:Ignorable="d"
-        Title="Proyecto Final" Height="510" Width="766" Background="#FFFDFDFD" WindowState="Maximized" Icon="pack://siteoforigin:,,,/Resources/logo.png" GotKeyboardFocus="Window_GotKeyboardFocus" WindowStyle="None">
+        Title="Proyecto Final" Height="510" Width="766" Background="#FFFDFDFD" WindowState="Maximized" Icon="pack://siteoforigin:,,,/Resources/Images/logo.png" GotKeyboardFocus="Window_GotKeyboardFocus" WindowStyle="None">
     <Grid>
         <Frame x:Name="frame" Content="" NavigationUIVisibility="Hidden" Loaded="frame_Loaded" Navigated="frame_Navigated"/>
-        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20, 20, 0, 20" Width="250" Source="https://logodesignerblog.com/wp-content/uploads/2009/02/citibank.jpg"/>
+        <Image Margin="20,20,0,0" Source="pack://siteoforigin:,,,/Resources/Images/logo.png" HorizontalAlignment="Left" Width="160" Height="100" VerticalAlignment="Top"/>
     </Grid>
 </Window>

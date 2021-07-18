@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Terminal.Helpers;
-using static Terminal.Helpers.NavigationHelper;
+using Terminal.Providers;
 
 namespace Terminal.Pages
 {
@@ -10,17 +9,18 @@ namespace Terminal.Pages
     /// </summary>
     public partial class ProductResetResult : Page
     {
-        private readonly NavigationHelper NavigationHelper;
+        private readonly INavigationProvider NavigationProvider;
 
-        public ProductResetResult(NavigationHelper navigationHelper)
+        public ProductResetResult(INavigationProvider navigationProvider)
         {
-            NavigationHelper = navigationHelper;
+            NavigationProvider = navigationProvider;
+
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.GoBack();
+            NavigationProvider.GoBack();
         }
     }
 }

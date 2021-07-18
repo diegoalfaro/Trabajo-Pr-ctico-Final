@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\IConnector.cs" />
+    <Compile Include="Common\JsonResponse.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -57,14 +59,14 @@
     <Compile Include="Converters\JsonPathConverter.cs" />
     <Compile Include="DTO\AccountBalanceDTO.cs" />
     <Compile Include="DTO\AccountMovementDTO.cs" />
-    <Compile Include="DTO\AccountMovementListDTO.cs" />
+    <Compile Include="DTO\ClientAccountMovementsDTO.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
-    <Compile Include="DTO\ProductListDTO.cs" />
+    <Compile Include="DTO\ClientProductsDTO.cs" />
     <Compile Include="DTO\ProductResetDTO.cs" />
-    <Compile Include="Interfaces\IHttpMessage.cs" />
-    <Compile Include="Interfaces\IRequest.cs" />
-    <Compile Include="Interfaces\IResponse.cs" />
+    <Compile Include="Common\IHttpMessage.cs" />
+    <Compile Include="Common\IRequest.cs" />
+    <Compile Include="Common\IResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +82,9 @@
       <Project>{7a544087-e546-4fd0-8c0a-adeed63a4c1a}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{79218a34-7532-428c-980d-f6a456f11d91}</Project>
-      <Name>Service</Name>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{18ad2b35-6e47-4142-9bae-981126b6acc4}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

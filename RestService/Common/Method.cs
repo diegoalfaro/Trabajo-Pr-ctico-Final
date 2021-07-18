@@ -6,6 +6,7 @@
         POST,
         PUT,
         DELETE,
-        OPTIONS
+        OPTIONS,
+        PATH
     }
 }

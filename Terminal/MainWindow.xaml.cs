@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using Terminal.Helpers;
+using Terminal.Providers;
 using Terminal.Pages;
 using static Terminal.Properties.Settings;
 
@@ -14,23 +14,23 @@ namespace Terminal
     /// </summary>
     public partial class MainWindow : Window
     {
-        static Keypad CreateKeyPad(Control pControl)
+        static Keypad CreateKeyPad(Control control)
         {
-            Point position = pControl.PointToScreen(new Point(0d, 0d));
+            Point position = control.PointToScreen(new Point(0d, 0d));
 
-            var keypad = new Keypad(pControl);
+            var keypad = new Keypad(control);
             keypad.Show();
-            keypad.Top = position.Y + pControl.ActualHeight;
+            keypad.Top = position.Y + control.ActualHeight;
             keypad.Left = position.X;
 
             return keypad;
         }
 
-        private readonly NavigationHelper NavigationHelper;
+        private readonly INavigationProvider NavigationProvider;
 
-        public MainWindow(NavigationHelper navigationHelper)
+        public MainWindow(INavigationProvider navigationProvider)
         {
-            NavigationHelper = navigationHelper;
+            NavigationProvider = navigationProvider;
             InitializeComponent();
             Keyboard.DefaultRestoreFocusMode = RestoreFocusMode.None;
             Keyboard.PrimaryDevice.DefaultRestoreFocusMode = RestoreFocusMode.None;
@@ -65,8 +65,8 @@ namespace Terminal
 
         private void frame_Loaded(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.ConfigureNavigationFrame();
-            NavigationHelper.NavigateTo<Login>();
+            NavigationProvider.NavigationFrame = frame;
+            NavigationProvider.NavigateTo<Login>();
         }
     }
 }

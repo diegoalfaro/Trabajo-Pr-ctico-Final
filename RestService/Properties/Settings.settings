@@ -5,5 +5,20 @@
     <Setting Name="API_URL" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://my-json-server.typicode.com/utn-frcu-isi-tdp/tas-db/</Value>
     </Setting>
+    <Setting Name="GET_CLIENTS_PATH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">clients</Value>
+    </Setting>
+    <Setting Name="GET_PRODUCTS_PATH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">products</Value>
+    </Setting>
+    <Setting Name="GET_ACCOUNT_BALANCE_PATH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">account-balance</Value>
+    </Setting>
+    <Setting Name="GET_ACCOUNT_MOVEMENTS_PATH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">account-movements</Value>
+    </Setting>
+    <Setting Name="GET_PRODUCT_RESET_PATH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">product-reset</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

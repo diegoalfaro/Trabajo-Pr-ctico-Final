@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using Terminal.Helpers;
+using Terminal.Providers;
 
 namespace Terminal.Pages
 {
@@ -11,26 +11,27 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Movements : Page
     {
-        private readonly NavigationHelper NavigationHelper;
-        private readonly AccountHelper AccountHelper;
+        private readonly INavigationProvider NavigationProvider;
+        private readonly IAccountProvider AccountProvider;
 
         public IEnumerable<AccountMovement> AccountMovementList { get; set; }
 
-        public Movements(NavigationHelper navigationHelper, AccountHelper accountHelper)
+        public Movements(INavigationProvider navigationProvider, IAccountProvider accountProvider)
         {
-            NavigationHelper = navigationHelper;
-            AccountHelper = accountHelper;
+            NavigationProvider = navigationProvider;
+            AccountProvider = accountProvider;
+
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.GoBack();
+            NavigationProvider.GoBack();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            AccountMovementList = await AccountHelper.GetMovements();
+            AccountMovementList = await AccountProvider.GetAccountMovements();
             DataContext = this;
             UpdateLayout();
         }

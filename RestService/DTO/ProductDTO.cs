@@ -16,14 +16,14 @@ namespace RestService.DTO
         [JsonProperty("type")]
         public string Type { get; set; }
 
-        public static explicit operator Product(ProductDTO dto)
+        public static implicit operator Product(ProductDTO dto)
         {
-            return new Product()
+            return dto != null ? new Product()
             {
                 Number = dto.Number,
                 Name = dto.Name,
                 Type = dto.Type,
-            };
+            } : null;
         }
     }
 }

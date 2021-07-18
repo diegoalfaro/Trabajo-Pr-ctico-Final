@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-using Terminal.Helpers;
+using Terminal.Providers;
 
 namespace Terminal.Pages
 {
@@ -11,13 +11,14 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Login : Page
     {
-        private readonly NavigationHelper NavigationHelper;
-        private readonly AuthHelper AuthHelper;
+        private readonly INavigationProvider NavigationProvider;
+        private readonly IAuthProvider AuthProvider;
 
-        public Login(NavigationHelper navigationHelper, AuthHelper authHelper)
+        public Login(INavigationProvider navigationProvider, IAuthProvider authProvider)
         {
-            NavigationHelper = navigationHelper;
-            AuthHelper = authHelper;
+            NavigationProvider = navigationProvider;
+            AuthProvider = authProvider;
+
             InitializeComponent();
         }
 
@@ -40,21 +41,21 @@ namespace Terminal.Pages
                 }
 
                 loading = true;
-                NavigationHelper.ShowLoading();
+                NavigationProvider.ShowLoading();
 
-                bool result = await AuthHelper.Login(id, password);
+                bool result = await AuthProvider.Login(id, password);
 
                 if (!result)
                 {
                     throw new Exception("Comprobar los datos ingresados");
                 }
 
-                NavigationHelper.NavigateTo<Main>();
+                NavigationProvider.NavigateTo<Main>();
             }
 
             catch (Exception pEx)
             {
-                NavigationHelper.ShowError(new
+                NavigationProvider.ShowError(new
                 {
                     Text = pEx.Message,
                     BackPage = this,

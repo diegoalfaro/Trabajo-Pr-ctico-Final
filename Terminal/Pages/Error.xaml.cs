@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Terminal.Helpers;
+using Terminal.Providers;
 
 namespace Terminal.Pages
 {
@@ -9,20 +9,22 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Error : Page
     {
-        private readonly NavigationHelper NavigationHelper;
+        private readonly INavigationProvider NavigationProvider;
 
-        public bool CanGoBack => NavigationHelper.CanGoBack();
+        public bool CanGoBack => NavigationProvider.CanGoBack();
 
-        public Error(NavigationHelper navigationHelper)
+        public Error(INavigationProvider navigationProvider)
         {
-            NavigationHelper = navigationHelper;
+            NavigationProvider = navigationProvider;
+
             InitializeComponent();
+
             DataContext = new { Text = "Hubo un error" };
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.GoBack();
+            NavigationProvider.GoBack();
         }
     }
 }

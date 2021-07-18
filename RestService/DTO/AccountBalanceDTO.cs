@@ -8,18 +8,18 @@ namespace RestService.DTO
     class AccountBalanceDTO
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int ClientId { get; set; }
 
         [JsonProperty("response.balance")]
         public double Balance { get; set; }
 
-        public static explicit operator AccountBalance(AccountBalanceDTO dto)
+        public static implicit operator AccountBalance(AccountBalanceDTO dto)
         {
-            return new AccountBalance()
+            return dto != null ? new AccountBalance()
             {
-                AccountBalanceId = dto.Id,
+                ClientId = dto.ClientId,
                 Balance = dto.Balance
-            };
+            } : null;
         }
     }
 }

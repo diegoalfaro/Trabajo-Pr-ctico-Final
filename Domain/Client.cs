@@ -5,7 +5,8 @@ namespace Domain
 {
     public class Client
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ClientId { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }

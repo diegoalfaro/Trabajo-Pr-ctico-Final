@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RestService;
-using Service;
+using Services;
 using System;
 using System.IO;
 using System.Windows;
-using Terminal.Helpers;
 using Terminal.Pages;
+using Terminal.Providers;
 using static Terminal.Properties.Settings;
 
 namespace Terminal
@@ -17,18 +17,23 @@ namespace Terminal
     {
         const string DATA_DIRECTORY_KEY = "DataDirectory";
 
-        private readonly ServiceProvider ServiceProvider;
+        private readonly IServiceProvider ServiceProvider;
 
         private static ServiceProvider CreateServiceProvider()
         {
             var services = new ServiceCollection();
 
-            services.AddSingleton<IApiService>(new ApiRestService());
+            services.AddSingleton<IAuthService, ApiRestService>();
+            services.AddSingleton<IClientService, ApiRestService>();
+            services.AddSingleton<IAccountService, ApiRestService>();
+            services.AddSingleton<IProductService, ApiRestService>();
 
-            services.AddSingleton<NavigationHelper>();
-            services.AddSingleton<AuthHelper>();
-            services.AddSingleton<ProductHelper>();
-            services.AddSingleton<AccountHelper>();
+            services.AddSingleton<INavigationProvider, NavigationProvider>();
+            services.AddSingleton<IDataManagementProvider, DataManagementProvider>();
+            services.AddSingleton<IAuthProvider, AuthProvider>();
+            services.AddSingleton<IUserActionProvider, UserActionProvider>();
+            services.AddSingleton<IAccountProvider, AccountProvider>();
+            services.AddSingleton<IProductProvider, ProductProvider>();
 
             services.AddTransient<MainWindow>();
             services.AddTransient<Balance>();

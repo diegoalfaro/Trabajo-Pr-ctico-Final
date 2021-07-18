@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Net.Http;
-using RestService.Interfaces;
+using System.Threading.Tasks;
 
 namespace RestService.Common
 {
@@ -12,13 +11,13 @@ namespace RestService.Common
 
         public string Path { get; set; }
 
-        public IEnumerable<KeyValuePair<string, IEnumerable<string>>> Headers { get; set; }
+        public Dictionary<string, IEnumerable<string>> Headers { get; set; }
 
         public string Body { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> Params { get; set; }
+        public Dictionary<string, string> Params { get; set; }
 
-        internal HttpRequestMessage ToHttpRequestMessage()
+        internal async Task<HttpRequestMessage> ToHttpRequestMessage()
         {
             HttpRequestMessage request = new HttpRequestMessage();
 
@@ -42,13 +41,13 @@ namespace RestService.Common
                 string query;
                 using (var content = new FormUrlEncodedContent(Params))
                 {
-                    query = content.ReadAsStringAsync().Result;
+                    query = await content.ReadAsStringAsync();
                 }
 
                 Path += $"?{query}";
             }
 
-            request.RequestUri = new Uri(Path, UriKind.Relative);
+            request.RequestUri = new Uri(Path, UriKind.RelativeOrAbsolute);
 
             return request;
         }

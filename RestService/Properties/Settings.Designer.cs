@@ -32,5 +32,50 @@ namespace RestService.Properties {
                 return ((string)(this["API_URL"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("clients")]
+        public string GET_CLIENTS_PATH {
+            get {
+                return ((string)(this["GET_CLIENTS_PATH"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("products")]
+        public string GET_PRODUCTS_PATH {
+            get {
+                return ((string)(this["GET_PRODUCTS_PATH"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("account-balance")]
+        public string GET_ACCOUNT_BALANCE_PATH {
+            get {
+                return ((string)(this["GET_ACCOUNT_BALANCE_PATH"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("account-movements")]
+        public string GET_ACCOUNT_MOVEMENTS_PATH {
+            get {
+                return ((string)(this["GET_ACCOUNT_MOVEMENTS_PATH"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("product-reset")]
+        public string GET_PRODUCT_RESET_PATH {
+            get {
+                return ((string)(this["GET_PRODUCT_RESET_PATH"]));
+            }
+        }
     }
 }

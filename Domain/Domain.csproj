@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountBalance.cs" />
+    <Compile Include="UserAction.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="AccountMovement.cs" />
     <Compile Include="Product.cs" />

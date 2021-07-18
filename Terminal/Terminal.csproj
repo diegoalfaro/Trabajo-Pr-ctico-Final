@@ -89,6 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Providers\UserActionProvider.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,10 +98,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\AccountHelper.cs" />
-    <Compile Include="Helpers\NavigationHelper.cs" />
-    <Compile Include="Helpers\ProductHelper.cs" />
-    <Compile Include="Helpers\AuthHelper.cs" />
+    <Compile Include="Providers\AccountProvider.cs" />
+    <Compile Include="Providers\DataManagementProvider.cs" />
+    <Compile Include="Providers\IAccountProvider.cs" />
+    <Compile Include="Providers\IAuthProvider.cs" />
+    <Compile Include="Providers\IDataManagementProvider.cs" />
+    <Compile Include="Providers\INavigationProvider.cs" />
+    <Compile Include="Providers\IProductProvider.cs" />
+    <Compile Include="Providers\IUserActionProvider.cs" />
+    <Compile Include="Providers\NavigationProvider.cs" />
+    <Compile Include="Providers\ProductProvider.cs" />
+    <Compile Include="Providers\AuthProvider.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -183,6 +191,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -198,11 +207,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.png">
+    <None Include="Resources\Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataManagement\DataManagement.csproj">
+      <Project>{3d80f653-73e4-4d64-a944-e0f8ce10b3f1}</Project>
+      <Name>DataManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{7A544087-E546-4FD0-8C0A-ADEED63A4C1A}</Project>
       <Name>Domain</Name>
@@ -211,17 +224,13 @@
       <Project>{3adbff38-915c-4115-9cdd-81c0cad9733a}</Project>
       <Name>KeyPad</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{3d80f653-73e4-4d64-a944-e0f8ce10b3f1}</Project>
-      <Name>Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RestService\RestService.csproj">
       <Project>{8c9883b8-601e-441a-8811-1a199472602d}</Project>
       <Name>RestService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{79218a34-7532-428c-980d-f6a456f11d91}</Project>
-      <Name>Service</Name>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{18ad2b35-6e47-4142-9bae-981126b6acc4}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

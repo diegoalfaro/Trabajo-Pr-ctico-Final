@@ -16,14 +16,14 @@ namespace RestService.DTO
         [JsonProperty("response.error-description")]
         public string ErrorDescription { get; set; }
 
-        public static explicit operator ProductReset(ProductResetDTO dto)
+        public static implicit operator ProductReset(ProductResetDTO dto)
         {
-            return new ProductReset()
+            return dto != null ? new ProductReset()
             {
                 Number = dto.Number,
                 Error = dto.Error,
                 ErrorDescription = dto.ErrorDescription,
-            };
+            } : null;
         }
     }
 }

@@ -5,19 +5,19 @@ using System.Net.Http;
 
 namespace RestService.Common
 {
-    public class Connector
+    public class Connector: IConnector
     {
-        private readonly Uri iBaseURI;
+        private readonly Uri BaseURI;
 
-        public Connector(String pBaseURI)
+        public Connector(string baseURI)
         {
-            this.iBaseURI = new Uri(pBaseURI);
+            BaseURI = new Uri(baseURI);
         }
 
         public async Task<TResponse> SendAsync<TResponse>(Request request) where TResponse : Response
         {
-            using (HttpClient client = new HttpClient { BaseAddress = this.iBaseURI })
-            using (HttpResponseMessage httpResponseMessage = await client.SendAsync(request.ToHttpRequestMessage()))
+            using (HttpClient client = new HttpClient { BaseAddress = this.BaseURI })
+            using (HttpResponseMessage httpResponseMessage = await client.SendAsync(await request.ToHttpRequestMessage()))
             {
                 return await Response.FromHttpReponseMessage<TResponse>(httpResponseMessage);
             }

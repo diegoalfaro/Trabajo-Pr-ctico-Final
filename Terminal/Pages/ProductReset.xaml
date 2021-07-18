@@ -45,7 +45,7 @@
                     </WrapPanel>
                 </Button.Content>
             </Button>
-            <Button Grid.Row="2" Grid.Column="1" x:Name="resetButton" Click="resetButton_Click" Margin="10, 0, 0, 0">
+            <Button Grid.Row="2" Grid.Column="1" x:Name="resetButton" Click="resetButton_Click" Margin="10, 0, 0, 0" Visibility="Hidden">
                 <Button.Content>
                     <WrapPanel>
                         <fa:ImageAwesome Icon="Refresh" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>

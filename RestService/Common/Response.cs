@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using RestService.Interfaces;
 
 namespace RestService.Common
 {
@@ -10,15 +9,15 @@ namespace RestService.Common
     {
         public int Status { get; set; }
 
-        public IEnumerable<KeyValuePair<string, IEnumerable<string>>> Headers { get; set; }
+        public Dictionary<string, IEnumerable<string>> Headers { get; set; }
 
-        public String Body { get; set; }
+        public string Body { get; set; }
 
         internal static async Task<TResponse> FromHttpReponseMessage<TResponse>(HttpResponseMessage httpResponseMessage) where TResponse : Response
         {
             using (HttpContent content = httpResponseMessage.Content)
             {
-                var headers = new Dictionary<String, IEnumerable<string>>();
+                var headers = new Dictionary<string, IEnumerable<string>>();
                 foreach (var header in httpResponseMessage.Headers)
                 {
                     headers.Add(header.Key, header.Value);

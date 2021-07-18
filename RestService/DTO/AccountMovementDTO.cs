@@ -11,13 +11,13 @@ namespace RestService.DTO
         [JsonProperty("ammount")]
         public double Ammount { get; set; }
 
-        public static explicit operator AccountMovement(AccountMovementDTO dto)
+        public static implicit operator AccountMovement(AccountMovementDTO dto)
         {
-            return new AccountMovement()
+            return dto != null ? new AccountMovement()
             {
                 Date = dto.Date,
                 Ammount = dto.Ammount
-            };
+            } : null;
         }
     }
 }

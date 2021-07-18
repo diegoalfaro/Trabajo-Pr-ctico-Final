@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-using Terminal.Helpers;
+using Terminal.Providers;
 
 namespace Terminal.Pages
 {
@@ -10,38 +10,39 @@ namespace Terminal.Pages
     /// </summary>
     public partial class Main : Page
     {
-        private readonly NavigationHelper NavigationHelper;
-        private readonly AuthHelper AuthHelper;
+        private readonly INavigationProvider NavigationProvider;
+        private readonly IAuthProvider AuthProvider;
 
-        public string WelcomeText => $"Bienvenido, {AuthHelper.CurrentClient.Name}";
+        public string WelcomeText => $"Bienvenido, {AuthProvider.CurrentClient.Name}";
 
-        public Main(NavigationHelper navigationHelper, AuthHelper authHelper)
+        public Main(INavigationProvider navigationProvider, IAuthProvider authProvider)
         {
-            NavigationHelper = navigationHelper;
-            AuthHelper = authHelper;
+            NavigationProvider = navigationProvider;
+            AuthProvider = authProvider;
+
             InitializeComponent();
             DataContext = this;
         }
 
         private void pinButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.NavigateTo<ProductReset>();
+            NavigationProvider.NavigateTo<ProductReset>();
         }
 
         private void balanceButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.NavigateTo<Balance>();
+            NavigationProvider.NavigateTo<Balance>();
         }
 
         private void movementsButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.NavigateTo<Movements>();
+            NavigationProvider.NavigateTo<Movements>();
         }
 
         private async void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            await AuthHelper.Logout();
-            NavigationHelper.NavigateTo<Login>();
+            await AuthProvider.Logout();
+            NavigationProvider.NavigateTo<Login>();
         }
     }
 }

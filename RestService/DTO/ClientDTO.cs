@@ -9,7 +9,7 @@ namespace RestService.DTO
     class ClientDTO
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int ClientId { get; set; }
 
         [JsonProperty("pass")]
         public string Password { get; set; }
@@ -21,14 +21,14 @@ namespace RestService.DTO
         [JsonConverter(typeof(StringEnumConverter))]
         public ClientSegment Segment { get; set; }
 
-        public static explicit operator Client(ClientDTO dto)
+        public static implicit operator Client(ClientDTO dto)
         {
-            return new Client() {
-                ClientId = dto.Id,
+            return dto != null ? new Client() {
+                ClientId = dto.ClientId,
                 Password = dto.Password,
                 Name = dto.Name,
                 Segment = dto.Segment
-            };
+            } : null;
         }
     }
 }
