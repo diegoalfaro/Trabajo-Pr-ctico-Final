@@ -9,8 +9,6 @@ namespace UnitTests
 {
     public abstract class BaseUnitTest
     {
-        const string DATA_DIRECTORY_KEY = "DataDirectory";
-
         protected IAuthService AuthService;
         protected IProductService ProductService;
         protected IClientService ClientService;
