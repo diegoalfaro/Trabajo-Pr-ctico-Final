@@ -24,7 +24,7 @@
             <Label Grid.ColumnSpan="2" Target="{Binding ElementName=productsBox}" Width="Auto">
                 <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="CreditCard" Width="34" Margin="0, 0, 20, 0"/>
-                    <AccessText VerticalAlignment="Center">Seleccionar producto</AccessText>
+                    <AccessText>Seleccionar producto</AccessText>
                 </WrapPanel>
             </Label>
             <ListBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="productsBox" Margin="0, 0, 0, 20" ItemsSource="{Binding Products, IsAsync=True}">
@@ -41,15 +41,15 @@
                 <Button.Content>
                     <WrapPanel VerticalAlignment="Center">
                         <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
-                        <TextBlock VerticalAlignment="Center">Volver</TextBlock>
+                        <TextBlock>Volver</TextBlock>
                     </WrapPanel>
                 </Button.Content>
             </Button>
             <Button Grid.Row="2" Grid.Column="1" x:Name="resetButton" Click="resetButton_Click" Margin="10, 0, 0, 0" Visibility="Hidden">
                 <Button.Content>
-                    <WrapPanel>
-                        <fa:ImageAwesome Icon="Refresh" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
-                        <TextBlock VerticalAlignment="Center">Blanquear PIN</TextBlock>
+                    <WrapPanel VerticalAlignment="Center">
+                        <fa:ImageAwesome Icon="Unlock" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                        <TextBlock>Blanquear PIN</TextBlock>
                     </WrapPanel>
                 </Button.Content>
             </Button>

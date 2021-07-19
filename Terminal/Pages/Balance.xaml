@@ -23,7 +23,7 @@
             <Button.Content>
                 <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
-                    <TextBlock VerticalAlignment="Center">Volver</TextBlock>
+                    <TextBlock>Volver</TextBlock>
                 </WrapPanel>
             </Button.Content>
         </Button>

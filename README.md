@@ -2,7 +2,7 @@
 
 [![Banco Rubik](Terminal/Resources/Images/logo.png)](https://github.com/diegoalfaro/Trabajo-Pr-ctico-Final)
 
-## Trabajo práctico Final
+## Trabajo Práctico Final
 * Materia: Taller de Programación
 * Año: 2018
 * Institución: [UTN FRCU](http://www.frcu.utn.edu.ar)
