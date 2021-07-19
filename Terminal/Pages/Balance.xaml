@@ -11,7 +11,7 @@
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Label FontFamily="Open Sans" HorizontalContentAlignment="Center" Width="Auto">
-            <WrapPanel>
+            <WrapPanel VerticalAlignment="Center">
                 <fa:ImageAwesome Icon="Money" Width="38" Margin="0, 0, 20, 0"/>
                 <AccessText>Cuenta Corriente</AccessText>
             </WrapPanel>
@@ -21,7 +21,7 @@
         </Label>
         <Button x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click">
             <Button.Content>
-                <WrapPanel>
+                <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
                     <TextBlock VerticalAlignment="Center">Volver</TextBlock>
                 </WrapPanel>

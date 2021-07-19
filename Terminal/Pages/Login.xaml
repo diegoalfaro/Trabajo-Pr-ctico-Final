@@ -10,14 +10,14 @@
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Label Target="{Binding ElementName=clientIdBox}">
-            <WrapPanel>
+            <WrapPanel VerticalAlignment="Center">
                 <fa:ImageAwesome Icon="User" Width="34" Margin="0, 0, 20, 0"/>
                 <AccessText VerticalAlignment="Center">DNI</AccessText>
             </WrapPanel>
         </Label>
         <TextBox Name="clientIdBox"/>
         <Label Target="{Binding ElementName=passwordBox}">
-            <WrapPanel>
+            <WrapPanel VerticalAlignment="Center">
                 <fa:ImageAwesome Icon="Lock" Width="38" Margin="0, 0, 20, 0"/>
                 <AccessText>Contraseña</AccessText>
             </WrapPanel>
@@ -25,7 +25,7 @@
         <PasswordBox Name="passwordBox"/>
         <Button Name="loginButton" Click="loginButton_Click" Margin="0, 30, 0, 0">
             <Button.Content>
-                <WrapPanel>
+                <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="SignIn" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
                     <TextBlock VerticalAlignment="Center">Acceder</TextBlock>
                 </WrapPanel>

@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.ColumnSpan="2" Target="{Binding ElementName=productsBox}" Width="Auto">
-                <WrapPanel>
+                <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="CreditCard" Width="34" Margin="0, 0, 20, 0"/>
                     <AccessText VerticalAlignment="Center">Seleccionar producto</AccessText>
                 </WrapPanel>
@@ -39,8 +39,8 @@
             </ListBox>
             <Button Grid.Row="2" x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click" Margin="0, 0, 10, 0">
                 <Button.Content>
-                    <WrapPanel>
-                        <fa:ImageAwesome Icon="ArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
+                    <WrapPanel VerticalAlignment="Center">
+                        <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
                         <TextBlock VerticalAlignment="Center">Volver</TextBlock>
                     </WrapPanel>
                 </Button.Content>

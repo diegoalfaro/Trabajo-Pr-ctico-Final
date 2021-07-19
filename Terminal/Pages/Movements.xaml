@@ -20,7 +20,7 @@
         </ListView>
         <Button x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click">
             <Button.Content>
-                <WrapPanel>
+                <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
                     <TextBlock VerticalAlignment="Center">Volver</TextBlock>
                 </WrapPanel>

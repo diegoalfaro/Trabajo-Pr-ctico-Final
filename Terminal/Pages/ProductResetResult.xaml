@@ -12,7 +12,7 @@
         <TextBlock Style="{StaticResource baseTextBlock}" Margin="0,0,0,20" Text="Blanqueo de PIN exitoso" TextWrapping="Wrap"/>
         <Button x:Name="backButton" HorizontalAlignment="Center" Click="backButton_Click" IsEnabled="{Binding CanGoBack}">
             <Button.Content>
-                <WrapPanel>
+                <WrapPanel VerticalAlignment="Center">
                     <fa:ImageAwesome Icon="LongArrowLeft" Height="38" Margin="0, 0, 20, 0" Foreground="WhiteSmoke"/>
                     <TextBlock VerticalAlignment="Center">Volver</TextBlock>
                 </WrapPanel>
