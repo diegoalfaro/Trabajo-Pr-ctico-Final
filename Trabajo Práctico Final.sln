@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestService", "RestService\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9903F182-8DA0-45A5-A5DD-105681F57FF4}"
 	ProjectSection(SolutionItems) = preProject
-		Leeme.txt = Leeme.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{18AD2B35-6E47-4142-9BAE-981126B6ACC4}"
